@@ -55,11 +55,11 @@ public class Atis1 extends Fragment {
 
         final ParseQuery<ParseObject> suhuatis1 = ParseQuery.getQuery("TLog");
         suhuatis1.whereEqualTo("idDevice", 1 );
-        //suhuatis1.orderByAscending("createdAt");
-        suhuatis1.findInBackground(new FindCallback<ParseObject>() {
+        suhuatis1.orderByAscending("createdAt");
+        suhuatis1.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-
+            public void done(ParseObject object, ParseException e) {
+                perantarasuhu = object.getDouble("temperature");
             }
         });
         //perantarasuhu
